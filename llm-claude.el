@@ -201,7 +201,7 @@
                     .
                     ,(lambda (event)
                        (let* ((data (plz-event-source-event-data event))
-                              (json (json-parse-string data :object-type 'alist))
+                              (json (json-parse-string data :object-type 'alist :null-object nil))
                               (block (assoc-default 'content_block json))
                               (type (assoc-default 'type block))
                               (index (assoc-default 'index json)))
@@ -219,7 +219,7 @@
                     .
                     ,(lambda (event)
                        (let* ((data (plz-event-source-event-data event))
-                              (json (json-parse-string data :object-type 'alist))
+                              (json (json-parse-string data :object-type 'alist :null-object nil))
                               (delta (assoc-default 'delta json))
                               (type (assoc-default 'type delta))
                               (index (assoc-default 'index json)))
