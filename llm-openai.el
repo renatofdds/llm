@@ -243,8 +243,9 @@ FCS is a list of `llm-provider-utils-tool-use' structs."
                    :type "function"
                    :function
                    (:name ,(llm-provider-utils-tool-use-name fc)
-                          :arguments ,(json-serialize
-                                       (llm-provider-utils-tool-use-args fc)))))
+                          :arguments ,(decode-coding-string
+																			 (json-serialize (llm-provider-utils-tool-use-args fc))
+																			 'utf-8))))
            fcs)))
 
 (defun llm-openai--build-messages (prompt)
