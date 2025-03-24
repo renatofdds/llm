@@ -66,7 +66,7 @@ RESPONSE can be nil if the response is complete."
                        (let ((data (plz-event-source-event-data event)))
                          (unless (equal data "[DONE]")
                            (when-let* ((response (llm-deepseek--get-partial-chat-response
-                                                  (json-parse-string data :object-type 'alist))))
+                                                  (json-parse-string data :object-type 'alist :null-object nil))))
                              (funcall receiver response))))))))))
 
 (cl-defmethod llm-capabilities ((provider llm-deepseek))

@@ -384,7 +384,7 @@ RESPONSE can be nil if the response is complete."
                     ,(lambda (event)
                        (let ((data (plz-event-source-event-data event)))
                          (unless (equal data "[DONE]")
-                           (let ((response-alist (json-parse-string data :object-type 'alist)))
+                           (let ((response-alist (json-parse-string data :object-type 'alist :null-object nil)))
                              (when-let ((response (llm-openai--get-partial-chat-response
                                                    response-alist)))
                                (funcall receiver (if (stringp response)
