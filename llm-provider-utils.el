@@ -862,8 +862,9 @@ have returned results."
   (llm-provider-populate-tool-uses provider prompt tool-uses)
   (let (results tool-use-and-results)
     (cl-loop
-     for tool-use in tool-uses do
-     (let* ((name (llm-provider-utils-tool-use-name tool-use))
+     for tu in tool-uses do
+     (let* ((tool-use tu)
+						(name (llm-provider-utils-tool-use-name tool-use))
             (arguments
              (llm-provider-utils--normalize-args
               (llm-provider-utils-tool-use-args tool-use)))
